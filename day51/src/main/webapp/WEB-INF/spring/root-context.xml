@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="location"  value="classpath:/db.properties"/>
+	</bean>
+	<bean id="dataSource"
+	class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${h2.driver}"/>
+		<property name="url" value="${h2.url}"/>
+		<property name="username" value="${h2.user}"/>
+		<property name="password" value="${h2.password}"/>
+		<property name="minIdle" value="3"/>
+		<property name="maxIdle" value="10"/>
+		<property name="maxActive" value="5"/>
+	</bean>	
+	<bean id="transactionManager"
+	class="org.springframework.jdbc.support.JdbcTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<aop:aspectj-autoproxy/>
+	<tx:annotation-driven/>
+	
+	<bean id="sqlSessionFactory"
+	class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:/mappers/DeptMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="sqlSession"
+	class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

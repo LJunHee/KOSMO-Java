@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="emp">
+  	<select id="pullList" resultType="Emp">
+  		select * from emp order by empno desc
+  	</select>
+  	<select id="getList" parameterType="int" resultType="Emp">
+  		select * from emp where empno=#{val}
+  	</select>
+  	<insert id="addList" parameterType="Emp">
+  		insert into emp (ename,pay,hiredate,deptno) values (#{ename},#{pay},now(),#{deptno})
+  	</insert>
+  	<update id="setList" parameterType="Emp">
+  		update emp set ename=#{ename},pay=#{pay},deptno=#{deptno} where empno=#{empno}
+  	</update>
+  	<delete id="rmList" parameterType="int">
+  		delete from emp where empno=#{val}
+  	</delete>
+  	<select id="listMax" resultType="int">
+  		select max(empno) from emp
+  	</select>
+  	<select id="getLastList" resultType="Emp">
+  		select * from emp a where empno=(select max(b.empno) from emp b)
+  	</select>
+  </mapper>
+  
+  
+  
+  
+  
+  
+  
+  

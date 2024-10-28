@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.gimhae.day49.dept.model.DeptDao">
+  	<select id="pullList" resultType="Dept">
+  		SELECT * FROM DEPT ORDER BY DEPTNO
+  	</select>
+  	<select id="getList" parameterType="int" resultType="Dept">
+  		SELECT * FROM DEPT WHERE DEPTNO=#{int}
+  	</select>
+  	<update id="addList" parameterType="Dept">
+  		INSERT INTO DEPT (DNAME,LOC) VALUES (#{dname},#{loc})
+  	</update>
+  	<update id="setList" parameterType="Dept">
+  		UPDATE DEPT SET DNAME=#{dname},LOC=#{loc} WHERE DEPTNO=#{deptno}
+  	</update>
+  	<delete id="rmList" parameterType="int">
+  		DELETE FROM DEPT WHERE DEPTNO=#{int}
+  	</delete>
+  </mapper>
+  
