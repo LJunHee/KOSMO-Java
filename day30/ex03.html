@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel = "stylesheet" type = "text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+        div+div{
+            background-color: rebeccapurple;
+        }
+        div+div+div{
+            background-color: greenyellow;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('div').eq(0).animate({'margin-left' : '500px'},3000,'swing');
+            $('div').eq(1).animate({'margin-left' : '500px'},3000,'linear');
+            $('div').eq(2).animate({'margin-left' : '500px'},3000,'easeOutBounce');
+            $('p').dialog();
+        })
+    </script>
+</head>
+<body>
+    <div>box1</div>
+    <div>box2</div>
+    <div>box3</div>
+    <p>팝업</p>
+</body>
+</html>

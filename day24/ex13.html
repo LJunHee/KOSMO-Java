@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        table,th,td{
+            border: 1px solid gray;
+            /* border-spacing: 0px; */
+        }
+        table{
+            border-collapse: collapse;
+        }
+        table{
+            width: 500px;
+        }
+        tr>th:first-child{
+            width: 80px;
+        }
+        tr>th:first-child+th+th{
+            width: 80px;
+        }
+        tr>th:last-child{
+            width: 80px;
+        }
+        table tr:first-child>th{
+            background-color: gray;
+        }
+        table tr>td:nth-child(2n-1){
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>list page</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>00</td>
+                <td>테스트</td>
+                <td>테스터</td>
+                <td>00/00</td>
+            </tr>
+            <tr>
+                <td>00</td>
+                <td>테스트</td>
+                <td>테스터</td>
+                <td>00/00</td>
+            </tr>
+            <tr>
+                <td>00</td>
+                <td>테스트</td>
+                <td>테스터</td>
+                <td>00/00</td>
+            </tr>
+            <tr>
+                <td>00</td>
+                <td>테스트</td>
+                <td>테스터</td>
+                <td>00/00</td>
+            </tr>
+            <tr>
+                <td>00</td>
+                <td>테스트</td>
+                <td>테스터</td>
+                <td>00/00</td>
+            </tr>
+            <tr>
+                <td>00</td>
+                <td>테스트</td>
+                <td>테스터</td>
+                <td>00/00</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

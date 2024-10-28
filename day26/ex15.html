@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var btn;
+        window.onload=function(){
+            btn = document.querySelector('button');
+            btn.onclick=function(){console.log('click');};
+            btn.ondbclick=function(){console.log('dbclick');};
+            btn.onmousedown=function(){console.log('onmousedown');};
+            btn.onmouseup=function(){console.log('onmouseup');};
+        };
+    </script>
+</head>
+<body>
+    <button>btn</button>
+</body>
+</html>

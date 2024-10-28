@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+	<div class="navbar-header">
+		<div class="navbar-brand">인제대학교</div>
+	</div>
+	<ul class="nav navbar-nav">
+		<li><a class="text-uppercase" href="${root }/">home</a></li>
+		<li><a class="text-uppercase" href="${root }/intro">intro</a></li>
+		<li><a class="text-uppercase" href="${root }/emp/list">emp</a></li>
+		<li><a class="text-uppercase" href="${root }/login/">login</a></li>
+	</ul>
+	</div>
+</nav>
+	<div class="container">
+		<div class="row">

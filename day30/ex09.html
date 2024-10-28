@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //jQuery.get('stu.xml',function(data,status,xhr){
+            //    $('tbody').empty();
+            //    $(data).find('student').each(function(index,ele){
+            //        var num = $(ele).attr('num');
+            //        var name = $(ele).attr('name');
+            //        var kor = $(ele).find('kor').html();
+            //        var eng = $(ele).find('eng').html();
+            //        var math = $(ele).find('math').html();
+            //        console.log(num,name,kor,eng,math);
+            //        $('<tr/>')
+            //            .append('<td>'+num+'</td>')
+            //            .append('<td>'+name+'</td>')
+            //            .append('<td>'+kor+'</td>')
+            //            .append('<td>'+eng+'</td>')
+            //            .append('<td>'+math+'</td>')
+            //            .appendTo('tbody');
+            //    });
+
+            //});
+            $.ajax({
+                type:'get',
+                url:'stu.xml',
+                data:"",
+                dataType:'xml',
+                success:function(data) {
+                    console.log(typeof data,data);
+                },
+                error:function(xhr,status,err){
+                    console.log(xhr,status,err);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>ajax통신(xml)</h1>
+    <table>
+        <thead>
+            <th>학번</th>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+            <th>수학</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

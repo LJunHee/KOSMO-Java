@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style rel="stylesheet" type="text/css">
+*,body,body>*{
+	margin: 0px;
+	padding: 0px;
+}
+body>div:first-child{
+	width: 800px;
+	margin: 0px auto;
+}
+.header{
+	overflow: hidden;
+}
+.header>h1{
+	float: left;
+	background-image: url("imgs/logo.png");
+	background-repeat: no-repeat;
+	width:141px;
+	height: 41px;
+	text-indent: -9999px;
+	margin: 5px;
+}
+.header>div{
+	float: right;
+}
+.header>div>form{
+	padding-top: 20px;
+	padding-right: 20px;
+}
+.header>div>form>label{
+	display: inline-block;
+	width: 30px;
+}
+.header>div>form>input{
+	width: 100px;
+	border: 0px solid gray;
+	border-bottom: 2px solid gray;
+}
+.header>div>form>button{
+	width: 50px;
+}
+#menu{
+	overflow: hidden;
+	background-color: gray;
+	border-top: 5px solid white;
+	border-bottom: 5px solid white;
+}
+#menu>ul{list-style: none;width: 400px;margin: 0px auto;}
+#menu>ul>li{float: left;width: 80px;margin: 0px 10px;}
+#menu>ul>li>a{
+	display:block;height: 35px;
+	padding-left:5px;text-decoration: none;
+	color:white;text-align: center;line-height: 30px;
+	border-top: 5px solid darkgray;
+	border-bottom: 5px solid darkgray;
+}
+#menu>ul>li>a:hover{
+	border-top: 5px solid white;
+	border-bottom: 5px solid white;
+}
+#content{
+	padding: 50px 0px;	
+	border-bottom: 5px solid darkgray;
+}
+#footer{padding: 50px;}
+#footer>p{text-align: center;}
+
+#loop{
+	overflow: hidden;
+	width: 750px;
+	margin: 0px auto;
+}
+#loop>ul{
+	list-style: none;
+	width: 2250px;
+	animation-name: ani1;
+	animation-duration: 12s;
+	animation-delay:1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	/* animation-play-state: paused; */
+}
+#loop>ul>li{
+	float: left;
+}
+#loop>ul>li>img{
+	width: 250px;
+}
+
+@keyframes ani1{
+	from {
+		margin-left:0px;
+	}
+	to {
+		margin-left:-1500px;	
+	}
+}
+
+#p3{}
+#p3>h2{
+	text-align: center;
+}
+#p3>table,#p3>table th,#p3>table td{
+	border-collapse: collapse;
+	border:1px solid gray;
+}
+#p3>table{
+	width: 80%;
+	margin: 0px auto;
+}
+
+#p3>table tr>td:first-child {
+	text-align: right;
+}
+#p3>table tr>th:first-child,
+#p3>table tr>td:first-child {
+	width: 80px;
+	height:30px;
+}
+#p3>table tr>td:first-child+td {
+	padding-left: 30px;
+}
+#p3>table tr>th:nth-child(3),
+#p3>table tr>th:nth-child(4),
+#p3>table tr>td:nth-child(3),
+#p3>table tr>td:nth-child(4) {
+	width: 100px;
+	text-align: center;
+}
+#p3>table+p{
+	width: 80%;	
+	margin: 50px auto;
+}
+#p3>table+p>a{
+	display: block;
+	height: 50px;
+	background-color: gray;
+	border-radius: 20px;
+	color: white;
+	text-align: center;
+	line-height: 50px;
+	text-decoration: none;
+}
+
+.popup{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0,0,0,0.2);
+}
+.popup>div{
+	width: 400px;
+	height: 300px;
+	margin: 100px auto;
+	padding:100px;
+	background-color: white;
+	border-radius: 20px;
+}
+.popup>div>h1{
+	text-align: center;
+}
+.popup>div>form{}
+.popup>div>form>div{
+	text-align: center;
+}
+.popup>div>form>div>label{
+	display:inline-block;
+	width: 50px;
+}
+.popup>div>form>div>input{
+	width: 80%;
+}
+}
+
+.popup>div>form>div>textarea{
+	width: 100%;
+}
+.popup>div>form>div>button{
+	display:inline-block;
+	width: 40%;
+	height: 35px;
+}
+#popup2>div>form>div>button{
+	width: 30%;
+}
+</style>
+<script type="text/javascript">
+var xhr,loop,loopUl,p1,p2,p3,p4,mn1,mn2,mn3,mn4,tbody,popup,popup2,addbtn,popupbtn2;
+
+var indexPage=function(e){
+	p1.style.display='block';
+	p2.style.display='none';
+	p3.style.display='none';
+	p4.style.display='none';
+};
+var introPage=function(e){
+	p1.style.display='none';
+	p2.style.display='block';
+	p3.style.display='none';
+	p4.style.display='none';
+};
+var bbsPage=function(e){
+	p1.style.display='none';
+	p2.style.display='none';
+	p3.style.display='block';
+	p4.style.display='none';
+	bbsList();
+};
+var guestPage=function(e){
+	p1.style.display='none';
+	p2.style.display='none';
+	p3.style.display='none';
+	p4.style.display='block';
+};
+
+var callback01=function(e){
+	if(xhr.readyState==4&& xhr.status==200){
+		var xml=xhr.responseXML; 
+		temp=document.createElement('div');
+		temp.innerHTML=xml.children[0].innerHTML;
+		var arr=temp.querySelectorAll('row');
+		var msg="";
+		for(row of arr){
+			msg+='<tr>';
+			msg+='<td>'+row.querySelector('num').innerText+'</td>';
+			msg+='<td>'+row.querySelector('sub').innerText+'</td>';
+			msg+='<td>'+row.querySelector('id').innerText+'</td>';
+			msg+='<td>'+row.querySelector('nalja').innerText+'</td>';
+			msg+='</tr>';
+		}
+		tbody.innerHTML=msg;
+		var trs=document.querySelectorAll('#p3 table tbody tr');
+		
+		for(var i=0; i<trs.length; i++){
+			trs[i].onclick=function(e){
+				bbs(this.querySelector('td').innerText);
+			};
+		}
+	}
+};
+
+var bbsList=function(){
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=callback01;
+	xhr.open('get','http://localhost:8080/day28/bbsList.jsp');
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.send();
+};
+var bbs=function(su){
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(e){
+		if(xhr.readyState==4 && xhr.status==200){
+			popup2.style.display='';
+			var msg=xhr.response;
+			var json=JSON.parse(msg);
+			var row=json.bbs[0];
+			var num=popup2.querySelectorAll('input')[0];
+			var sub=popup2.querySelectorAll('input')[1];
+			var id=popup2.querySelectorAll('input')[2];
+			var nalja=popup2.querySelectorAll('input')[3];
+			var content=popup2.querySelector('textarea');
+			num.value=row.num;
+			sub.value=row.sub;
+			id.value=row.id;
+			nalja.value=row.nalja;
+			content.value=row.content;
+		}
+	};
+	xhr.open('get','http://localhost:8080/day28/bbs.jsp?idx='+su);
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.send();
+};
+var bbsAdd=function(a,b,c){
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(e){
+		console.log('codeNum',xhr.status);
+		if(xhr.readyState==4 && xhr.status==200){
+			console.log(xhr.response);
+			clearPopup();
+			bbsList();
+		}
+	};
+	xhr.open('get','http://localhost:8080/day28/bbsAdd.jsp?sub='+a+'&id='+b+'&content='+c);
+	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhr.send();
+}
+var clearPopup=function(){
+	popup.querySelectorAll('input')[0].value='';
+	popup.querySelectorAll('input')[1].value='';
+	popup.querySelector('textarea').value='';
+	popup.style.display='none';	
+	popup2.style.display='none';	
+}
+
+var addBbs=function(e){
+	var sub=e.target.sub.value;
+	var id=e.target.id.value;
+	var content=e.target.content.value;
+	bbsAdd(sub,id,content);
+	//clearPopup();
+	return false;
+};
+var delBbs=function(e){
+	var del=e.target.parentElement.parentElement.num.value;
+	if(confirm(del+'번 글을 삭제하시겠습니까?')){
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(e){
+			if(xhr.readyState==4){
+				clearPopup();
+				bbsList();
+			}
+		};
+		xhr.open('post','http://localhost:8080/day28/bbsDel.jsp');
+		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xhr.send('idx='+del);
+		console.log('idx='+del);
+	}
+}
+
+window.onload=function(){
+	popup=document.querySelector("#popup");
+	popup.style.display='none';
+	popupbtn2=popup.querySelectorAll('button')[1];
+	popup.querySelector('div').onclick=function(e){
+		e.stopPropagation();
+	};
+	popup.onclick=function(e){
+		clearPopup();
+	}
+	popupbtn2.onclick=function(e){
+		clearPopup();
+	}
+
+	popup2=document.querySelector("#popup2");
+	popup2.style.display='none';
+	popupbtn3=popup2.querySelectorAll('button')[1];
+	popup2.querySelectorAll('button')[2].onclick=delBbs;
+	popup2.querySelector('div').onclick=function(e){
+		e.stopPropagation();
+	};
+	popup2.onclick=function(e){
+		clearPopup();
+	}
+	popupbtn3.onclick=function(e){
+		clearPopup();
+	}
+	
+	popup.querySelector('form').onsubmit=addBbs;
+	
+	mn1=document.querySelectorAll('#menu a')[0];
+	mn2=document.querySelectorAll('#menu a')[1];
+	mn3=document.querySelectorAll('#menu a')[2];
+	mn4=document.querySelectorAll('#menu a')[3];
+	p1=document.querySelector('#p1');
+	p2=document.querySelector('#p2');
+	p3=document.querySelector('#p3');
+	p4=document.querySelector('#p4');
+	tbody=document.querySelector('#p3 table>tbody');
+	addbtn=p3.querySelector('#p3 table+p>a');
+	addbtn.onclick=function(e){
+		popup.style.display='';
+		return false;
+	};
+	
+	indexPage();
+	mn2.addEventListener('click',introPage);
+	mn3.addEventListener('click',bbsPage);
+	mn4.addEventListener('click',guestPage);
+	
+	loop=document.querySelector('#loop');
+	loopUl=document.querySelector('#loop>ul');
+	
+	loopUl.onmouseover=function(e){
+		loopUl.style.animationPlayState='paused';
+	};
+	loopUl.onmouseout=function(e){
+		loopUl.style.animationPlayState='running';
+	};
+	
+
+	
+};
+</script>
+</head>
+<body>
+<div class="popup" id="popup">
+	<div>
+		<h1>입력 페이지</h1>
+		<form>
+			<div>
+				<label>제목</label>
+				<input name="sub">
+			</div>
+			<div>
+				<label>글쓴이</label>
+				<input name="id">
+			</div>
+			<div>
+				<textarea name="content"></textarea>
+			</div>
+			<div>
+				<button>입력</button>
+				<button type="button">취소</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="popup" id="popup2">
+	<div>
+		<h1>상세 페이지</h1>
+		<form>
+		<input type="hidden" name="num" readonly="readonly">
+			<div>
+				<label>제목</label>
+				<input name="sub" readonly="readonly">
+			</div>
+			<div>
+				<label>글쓴이</label>
+				<input name="id" readonly="readonly">
+			</div>
+			<div>
+				<label>날짜</label>
+				<input name="nalja" disabled="disabled">
+			</div>
+			<div>
+				<textarea name="content" readonly="readonly"></textarea>
+			</div>
+			<div>
+				<button>수정</button>
+				<button type="button">취소</button>
+				<button type="button">삭제</button>
+			</div>
+		</form>
+	</div>
+</div>
+	<div>
+		<div class="header">
+			<h1>인제대학교</h1>
+			<div>
+				<form action="#login">
+					<label>id</label><input/>
+					<label>pw</label><input type="password"/>
+					<button>login</button>
+					<button type="button">join</button>
+				</form>
+			</div>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="./">home</a></li>
+				<li><a href="#intro">intro</a></li>
+				<li><a href="#bbs">bbs</a></li>
+				<li><a href="#guest">guest</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<div id="p1">
+				<div id="loop">
+					<ul>
+						<li><img src="imgs/img01.jpg" /></li>
+						<li><img src="imgs/img02.jpg" /></li>
+						<li><img src="imgs/img03.jpg" /></li>
+						<li><img src="imgs/img04.jpg" /></li>
+						<li><img src="imgs/img05.jpg" /></li>
+						<li><img src="imgs/img06.jpg" /></li>
+						<li><img src="imgs/img01.jpg" /></li>
+						<li><img src="imgs/img02.jpg" /></li>
+						<li><img src="imgs/img03.jpg" /></li>
+					</ul>
+				</div>
+			</div>
+			<div id="p2">
+				<img alt="" src="https://www.inje.ac.kr/kor/assets/images/sub/gimhae-campus-1.jpg">
+			</div>
+			<div id="p3">
+				<h2>게시판</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>글번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<p><a href="#add">입력</a></p>
+			</div>
+			<div id="p4"></div>
+		</div>
+		<div id="footer">
+			<p>김해캠퍼스 (50834) 경남 김해시 인제로 197</p>
+			<p>Copyright &copy; 2024 INJE University. All rights reserved.</p>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+

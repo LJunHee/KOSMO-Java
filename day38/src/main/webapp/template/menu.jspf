@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${pageContext.request.contextPath }/">
+        <img alt="Brand" src="${pageContext.request.contextPath }/imgs/logo.png"/>
+      </a>
+    </div>
+    <ul class="nav navbar-nav">
+    	<li><a href="${pageContext.request.contextPath }/">home</a></li>
+    	<li><a href="${pageContext.request.contextPath }/intro.do">intro</a></li>
+    	<li><a href="${pageContext.request.contextPath }/emp/">emp</a></li>
+    	<li><a href="${pageContext.request.contextPath }/login/">login</a></li>
+    </ul>
+  </div>
+</nav>	
+<div class="container">
+	<div id="content" class="row">
+		<div class="col-md-12">
+		<!-- content begin -->

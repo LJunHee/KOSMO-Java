@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var input,btn,div,select;
+        window.onload=function(){
+            input = document.querySelector("input");
+            btn=document.querySelector('button');
+            div=document.querySelector('div');
+            select=document.querySelector('select');
+            //div.onkeydown=function(e){console.log('down',e.key,e.keyCode,input.value);};
+            //div.onkeyup=function(e){console.log('up',e.key,e.keyCode,input.value);};
+            //div.onkeypress=function(e){console.log('press',e.key,e.keyCode,input.value);};
+            select.onchange=function(e){console.log(e.target==this,e.target.value);};
+            input.onfocus=function(e){console.log('포커스 온');};
+            input.onblur=function(e){console.log('포커스 아웃');};
+            input.onselect=function(e){alert(input.value);};
+            btn.onclick=function(e){input.select();console.log('클릭');};
+        };
+    </script>
+</head>
+<body>
+    <div></div>
+    <input/><button>입력</button>
+    <select>
+        <option>item1</option>
+        <option>item2</option>
+        <option>item3</option>
+        <option>item4</option>
+    </select>
+</body>
+</html>

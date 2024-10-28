@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>DOM</h1>
+    <ul>
+        <li>item1</li>
+        <li class="cl1" id="id01">item2</li>
+        <li class="cl1">item3</li>
+        <li>item4</li>
+    </ul>
+    <input /><button onclick="nli();">추가</button>
+
+    <script type="text/javascript">
+        var input=document.querySelector('input');
+        var ul=document.querySelector('ul');
+        function nli(){
+            // var li=document.createElement('li');
+            // var msg=document.createTextNode(input.value);
+            // li.appendChild(msg);
+            // ul.appendChild(li);
+            ul.innerHTML=ul.innerHTML+'<li>'+input.value+'</li>';
+        }
+
+    </script>
+</body>
+</html>

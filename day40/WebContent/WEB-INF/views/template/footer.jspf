@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+		<div id = "footer">
+			<address>
+				<p>김해캠퍼스 (50834) 경남 김해시 인제로 197</p>
+				<p>Copyright &copy; INJE University. All rights reserved.</p>
+			</address>
+		</div>
+	</div>

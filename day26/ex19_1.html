@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 슬라이더</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 120px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .control-buttons {
+            position: absolute;
+            top: 80%;
+            left: 85.5%;
+            width: 100%;
+            display: flex;
+
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            position: relative;
+            left: 0;
+        }
+
+        ul > li {
+            flex: 0 0 400px;
+        }
+
+        ul > li > img {
+            width: 400px;
+            height: 120px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul id="imageList">
+            <li><img src="imgs/main1.jpg" alt=""></li>
+            <li><img src="imgs/main2.jpg" alt=""></li>
+            <li><img src="imgs/main3.jpg" alt=""></li>
+            <li><img src="imgs/main4.jpg" alt=""></li>
+            <li><img src="imgs/main5.jpg" alt=""></li>
+            <li><img src="imgs/main6.jpg" alt=""></li>
+        </ul>
+        <div class="control-buttons">
+            <button class="prev" onclick="prevImage()">◀</button>
+            <button class="next" onclick="nextImage()">▶</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var ul = document.getElementById('imageList');
+        var index = 1;
+        var imageWidth = 400;
+        var imageCount = 6;
+
+        function nextImage() {
+            index = index + 1;
+            if(index > imageCount) index = 1;
+            ul.style.left = -index * imageWidth + 'px';
+        }
+
+        function prevImage() {
+            index = index - 1;
+            if(index < 0) index = 5;
+            ul.style.left = -index * imageWidth + 'px';
+        }
+    </script>
+
+</body>
+</html>

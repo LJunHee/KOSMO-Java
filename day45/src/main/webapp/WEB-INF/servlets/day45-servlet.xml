@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- handler mapping  -->
+<bean 
+class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="mappings">
+		<props>
+			<prop key="/index.do">index</prop>
+			<prop key="/intro.do">intro</prop>
+			<prop key="/emp/list.do">list</prop>
+			<prop key="/emp/add.do">add</prop>
+			<prop key="/emp/insert.do">insert</prop>
+			<prop key="/emp/detail.do">detail</prop>
+			<prop key="/emp/update.do">update</prop>
+			<prop key="/emp/delete.do">delete</prop>
+		</props>
+	</property>
+</bean>
+<bean id="index" 
+class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+p:viewName="main"
+/>
+<bean id="intro" 
+class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+p:viewName="intro"
+/>
+<bean id="add" 
+class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+p:viewName="emp/add"
+/>
+<bean id="list"
+class="com.gimhae.controller.ListController"
+/>
+<bean id="insert" class="com.gimhae.controller.InsertController"
+p:commandName="bean"
+p:commandClass="com.gimhae.model.EmpVo" 
+p:supportedMethods="POST"
+/>
+<bean id ="detail" class = "com.gimhae.controller.DetailController"/>
+<bean id ="update" class = "com.gimhae.controller.UpdateController"
+p:commandName="bean"
+p:commandClass="com.gimhae.model.EmpVo"
+p:supportedMethods="POST"
+/>
+<bean id = "delete" class = "com.gimhae.controller.DeleteController"/>
+<!-- view resolver  -->
+<bean 
+class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+p:prefix="/WEB-INF/views/" p:suffix=".jsp"
+/>
+
+<bean id="autowiredAnnotationBeanPostProcessor"
+	class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+</beans>

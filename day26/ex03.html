@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var msg="1,000";
+        msg=msg.replaceAll(',','');
+        var su=Number.parseInt(msg);
+        console.log(su*2);
+        var msg2="3.14";
+        var su2=Number.parseFloat(msg2);
+        console.log(su2);
+        var su3=new Number('1234');
+        console.log(su3);
+        //alert('한글도 잘나오지만 <br>개행은 이것이 아니라\n입니다');
+        // var result1=confirm('확인해주세요');
+        // console.log(result1);
+        // var result2=prompt('할말을 입력');
+        // console.log(result2);
+        var d1=new Date();
+        // console.log(d1.getFullYear());
+        console.log(d1.getYear()+1900);
+        console.log(d1.getMonth()+1);// 0~11
+        console.log(d1.getDate());
+        console.log(d1.getHours());
+        console.log(d1.getMinutes());
+        console.log(d1.getSeconds());
+        var obj1={key1:'val1',key2:1234,key3:['item1','item2']};
+        var msg3=JSON.stringify(obj1);
+        console.log(typeof msg3, msg3);
+        var obj2=JSON.parse(msg3);
+        console.log(typeof obj2, obj2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

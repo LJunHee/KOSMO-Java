@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #target{
+            position: relative;
+            width: 300px;
+            height: 100px;
+            overflow: hidden;
+        }
+        #target>ul{
+            list-style: none;
+            padding: 0px;
+            width: 600px;
+        }
+        #target>ul>li{
+            float: left;
+        }
+        #target>ul>li>img{
+            width: 100px;
+
+        }
+        #target a{
+            display: block;
+            background-color: rgb(0,0,0);
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0px;
+            color: white;
+            text-align: center;
+            line-height: 80px;
+            text-decoration: none;
+            font-size: 72pt;
+            opacity: 0.3;
+        }
+        #target a:last-child{
+            left: 200px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        var cnt=0;
+        $(function(){
+            $('ul>li').eq(0).clone().appendTo('ul');
+            $('ul>li').eq(1).clone().appendTo('ul');
+            $('ul>li').eq(2).clone().appendTo('ul');
+            $('ul').width(900);
+
+            $('<a href="#">&lt;</a>').click(function(e){
+                cnt--;
+                if(cnt<0){
+                    cnt=5;
+                    $('ul').css('margin-left',-500);
+                }else
+                $('ul').css('margin-left',parseInt($('ul').css('margin-left'))+100);
+                return false;
+            }).appendTo('#target');
+            $('<a href="#">&gt;</a>').click(function(e){
+                cnt++;
+                if(cnt==6){cnt=0;
+                    $('ul').css('margin-left',0);
+                }
+                else
+                $('ul').css('margin-left',parseInt($('ul').css('margin-left'))-100);
+                return false;
+            }).appendTo('#target');
+        });
+
+    </script>
+</head>
+<body>
+    <div id="target">
+        <ul>
+            <li><img src="imgs/img01.jpg" alt=""></li>
+            <li><img src="imgs/img02.jpg" alt=""></li>
+            <li><img src="imgs/img03.jpg" alt=""></li>
+            <li><img src="imgs/img04.jpg" alt=""></li>
+            <li><img src="imgs/img05.jpg" alt=""></li>
+            <li><img src="imgs/img06.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

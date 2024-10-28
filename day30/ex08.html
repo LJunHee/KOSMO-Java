@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu {
+            background-color: gray;
+            overflow: hidden;
+        }
+        .menu > ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu > ul > li {
+            float: left;
+            position: relative;
+        }
+        .menu > ul > li > a {
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            color: white;
+            border: 1px solid black;
+        }
+        .menu > ul > li > ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            top: 100%;
+            left: 0;
+            background-color: gray;
+            display: none;
+        }
+        .menu > ul > li > ul > li > a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.menu > ul > li').hover(
+                function() {
+                    $(this).children('ul').stop(true, true).slideDown('fast');
+                },
+                function() {
+                    $(this).children('ul').stop(true, true).slideUp('fast');
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>인제대학교</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">intro</a></li>
+            <li><a href="#">bbs</a>
+                <ul>
+                    <li><a href="#">add</a></li>
+                    <li><a href="#">detail</a></li>
+                    <li><a href="#">edit</a></li>
+                    <li><a href="#">delete</a></li>
+                </ul>
+            </li>
+            <li><a href="#">login</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        The optional speed parameter specifies the speed of the hiding/showing,
+        and can take the following values: "slow", "fast", or milliseconds. The
+        optional callback parameter is a function to be executed after the hide()
+        or show() method completes (you will learn more about callback functions
+        in a later chapter). The following example demonstrates the speed
+        parameter with hide():
+    </div>
+    <div class="footer">
+        <p>김해캠퍼스 (50834) 경남 김해시 인제로 197</p>
+        <p>Copyright&copy; 1996-2022 INJE University. All rights reserved.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+      div {
+        background-color: aqua;
+      }
+      span {
+        display: block;
+        width: 0%;
+        height: 5px;
+        background-color: red;
+      }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+          var w = $('div').width();
+          console.log(w);
+          $('button').eq(0).click(function(e){
+          //  //$('div').hide('fast'); //div를 빠르게 숨김
+          //    $('div').hide(3000,function(){
+          //        alert('숨김');
+          //    }); //3초를 거쳐 숨겨짐
+              //$('div').hide({
+              //$('div').slideUp({
+              $('div').fadeOut({
+                  duration : 3000,
+                  easing : 'linear',
+                  complete : function(){$('span').width('0%');},
+                  //start : function(a){console.log('start',a);},
+                  //step:function(a,b){
+                  //    if(b.prop == 'width' && parseInt(a)==parseInt(w/2))
+                  //    console.log('50%');
+                  //}
+                  progress : function(a,b,c){
+                      // c = 남은시간
+                      // b = 0 ~ 100까지의 퍼센트
+                      if(parseInt(b*100)%10 == 0)
+                      $('span').width(b*100+'%');}
+              });
+          });
+
+
+          $('button').eq(1).click(function(e){
+              //$('div').show('slow'); // div가 느리게 나타남
+              //$('div').show(3000,function(){
+              //    alert('로딩완료');
+              //}); //3초를 거쳐 나타남
+              //$('div').show({
+              $('div').fadeIn({
+                  duration : 3000,
+                  easing : 'linear',
+                  complete : function(){$('span').width('0%');},
+                  //start : function(a){console.log('start',a);},
+                  //step:function(a,b){
+                  //    if(b.prop == 'width' && parseInt(a)==parseInt(w/2))
+                  //    console.log('50%');
+                  //}
+                  progress : function(a,b,c){
+                      // c = 남은시간
+                      // b = 0 ~ 100까지의 퍼센트
+                      if(parseInt(b*100)%10 == 0)
+                      $('span').width(b*100+'%');}
+              });
+          });
+
+          $('button').eq(2).click(function(e){
+              //$('div').hide(3000,function(){ //3초를 거쳐 숨김
+                  //$('div').show(3000); //다시 3초를 거쳐 나타남
+                  //$('div').toggle(3000,function(){}); //토글 스위치처럼 껐다가 킬수 있음
+              //});
+              $('div').toggle(3000,function(){});
+              $('div').slideToggle(3000,function(){});
+              $('div').fadeToggle(3000,function(){});
+          });
+
+          $('button').eq(3).click(function(e){
+              $('div').fadeTo(3000,1);
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <span></span>
+    <h1>animation1</h1>
+    <button>btn1</button>
+    <button>btn2</button>
+    <button>btn3</button>
+    <button>btn4</button>
+    <div>
+      The optional speed parameter specifies the speed of the hiding/showing,
+      and can take the following values: "slow", "fast", or milliseconds. The
+      optional callback parameter is a function to be executed after the hide()
+      or show() method completes (you will learn more about callback functions
+      in a later chapter). The following example demonstrates the speed
+      parameter with hide():
+    </div>
+  </body>
+</html>

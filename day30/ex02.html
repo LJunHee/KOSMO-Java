@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('div').animate({'margin-left':'500px','background-color':'red'},3000);
+            // $('div').delay(3000);
+            $('div').dequeue();
+            $('div').animate({'margin-top':'500px'},2000);
+            // $('div').delay(3000);
+            // $('div').animate({'margin-left':'0px'},3000);
+
+            // $('div').animate({'margin-top':'0px'},3000);
+
+            $('button').click(function(){
+                // var n = $('div').queue( "fx" );
+                // console.log(typeof n, n, n.length);
+                // for(var i=0; i<=n.length; i++)
+                    $('div').stop();
+                // $('div').clearQueue().stop();
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>animation2</h1>
+    <span></span><button>stop</button>
+    <div>box</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<nav>
+		<a href="${pageContext.request.contextPath }/index.do">home</a>
+		<a href="${pageContext.request.contextPath }/intro.do">intro</a>
+		<a href="${pageContext.request.contextPath }/emp/list.do">emp</a>
+		<a href="${pageContext.request.contextPath }/login.do">login</a>
+	</nav>
+	<div class="container">
+		<div id = "content"></div>

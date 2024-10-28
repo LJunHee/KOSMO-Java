@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //$.getJSON('stu.json',function(data){
+            //    console.log(typeof data);
+            //    data.students.forEach(function(ele,index){
+            //        $('<tr />')
+            //            .append($('<td/>').text(ele.num))
+            //            .append($('<td/>').text(ele.name))
+            //            .append($('<td/>').text(ele.kor))
+            //            .append($('<td/>').text(ele.eng))
+            //            .append($('<td/>').text(ele.math))
+            //            .appendTo('tbody');
+            //    });
+            //});
+
+            $('form').submit(function(e){
+                //var id = $(e.target.id).val();
+                //var pw = $(e.target.pw).val();
+
+                console.log($.param({key1:'val1',key2:'val2'}));
+                $.ajax({
+                    type:'get',
+                    url:'stu.json',
+                    data:$(e.target).serialize(),
+                    dataType:'json',
+                    success:function(data) {
+                        console.log(typeof data,data);
+                    },
+                    error:function(xhr,status,err){
+                        console.log(xhr,status,err);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>ajax통신(json)</h1>
+    <form action = "#">
+        <div><label>id</label><input type="text" name="id"></div>
+        <div><label>pw</label><input type="password" name="pw"></div>
+        <div><button>전송</button></div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

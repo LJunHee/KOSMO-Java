@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var xhr;
+window.onload=function(){
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				// 정상
+			}else if(xhr.status==404){
+				alert('주소오류');
+			}else if(xhr.status==405){
+				alert('허용안함');
+			}else if(xhr.status==500){
+				alert('문법에러');
+			}
+		}
+	};
+	xhr.open('get','https://www.weather.go.kr/w/index.do#dong/4825059000/35.2493126351167/128.901884444854/%EA%B2%BD%EB%82%A8%20%EA%B9%80%ED%95%B4%EC%8B%9C%20%EC%96%B4%EB%B0%A9%EB%8F%99/SCH/%EC%9D%B8%EC%A0%9C%EB%8C%80%ED%95%99%EA%B5%90%20%EC%9E%A5%EC%98%81%EC%8B%A4%EA%B4%80');
+	xhr.send();
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>

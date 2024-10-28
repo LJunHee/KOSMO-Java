@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .target{
+            background-color: aqua;
+            width: 300px;
+            height: 200px;
+        }
+        .target>div{
+            background-color: cadetblue;
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        //    $('button').eq(0).click(function(e){
+        //        console.log('첫번째');
+        //    });
+        //    $('button').eq(1).dblclick(function(e){
+        //        console.log('두번째');
+        //    });
+        //$("button, .target").click(function (e) {
+        //  console.log($(e.target).text());
+        //});
+        //$("button")
+        //  .first()
+        //    .click(function (e) {
+        //        console.log("첫번째");
+        //    })
+        //  .next()
+        //    .click(function (e) {
+        //        console.log("두번째");
+        //    })
+        //  .next()
+        //    .click(function (e) {
+        //        console.log("세번째");
+        //    });
+        $('button')
+            .first()
+                .hover(function(e){
+                    console.log('hover');
+                })
+            .next()
+                .mouseover(function(e){
+                    console.log('mouseover');
+                })
+            .next()
+                .mouseenter(function(e){
+                    console.log('mouseenter');
+                });
+        //$('div').mouseover(function(e){
+        //    console.log('위로');
+        //}).mouseout(function(e){
+        //    console.log('밖으로');
+        //});
+        //$('div').mouseenter(function(e){
+        //    console.log('위로');
+        //}).mouseleave(function(e){
+        //    console.log('밖으로');
+        //});
+        $('div').mousemove(function(e){
+            console.log(e.screenX,e.screenY);
+        });
+        $('button')
+            .first()
+                .click(function(e){
+                    console.log('클릭');
+                })
+                .mouseup(function(e){
+                    console.log('버튼 위로');
+                })
+                .mousedown(function(e){
+                    console.log('버튼 아래로');
+                })
+      });
+    </script>
+  </head>
+  <body>
+    <button>btn1</button>
+    <button>btn2</button>
+    <button>btn3</button>
+    <div class="target">
+        <div></div>
+    </div>
+  </body>
+</html>

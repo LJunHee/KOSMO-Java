@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.container{
+		margin: 0px auto;
+		width: 800px;
+	}
+	.header{
+		padding: 20px 0px;
+	}
+	.header>h1{
+		background-image: url("imgs/logo.png");
+		background-repeat: no-repeat;
+		height: 41px;
+		margin: 0px 10px;
+		text-indent: -999px;
+	}
+	#menu{
+		height: 35px;
+		background-color: gray;
+	}
+	#menu>ul{
+		list-style: none;
+		width: 400px;
+		margin: 0px auto;
+	}
+	#menu>ul>li{
+		float: left;
+		width: 100px;
+	}
+	#menu>ul>li>a{
+		color: white;
+		background-color: gray;
+		text-decoration: none;
+		text-transform:uppercase;
+		display: block;
+		height: 35px;
+		text-align: center;
+	}
+	#menu>ul>li>a:hover{
+		border-bottom: 5px solid yellow;
+		box-sizing: border-box;
+	}
+	#footer{
+		background-color: gray;
+		padding: 30px;
+		border-top: 5px solid white;
+	}	
+	#footer>p{
+		text-align: center;
+		font-size: 0.8em;
+	}	
+	.container img{
+		width: 100%;
+	}
+	#p1{}
+	#p1>.slider{}
+	#p1 .bx-wrapper{
+		position: relative;
+	}
+	#p1 .bx-controls-direction{
+		
+	}
+	#p1 .bx-controls-direction>a:first-child{
+		text-decoration: none;
+		color: white;
+		font-size: 72px;
+		font-weight: bold;
+		opacity: 0.2;
+		position: absolute;
+		top: 0px;
+		background-color: black;
+		display: inline-block;
+		height: 241px;
+		width: 150px;
+		text-align: center;
+		line-height: 200px;
+	}
+	#p1 .bx-controls-direction>a:nth-child(2){
+		opacity: 0.2;
+		color: white;
+		font-size: 72px;
+		font-weight: bold;
+		text-decoration: none;
+		position: absolute;
+		top: 0px;
+		background-color: black;
+		display: inline-block;
+		height: 241px;
+		width: 150px;
+		left: 650px;
+		text-align: center;
+		line-height: 200px;
+	}
+	
+	#p1 .bx-pager{
+		height: 100px;
+		width: 120px;
+		margin: 0px auto;
+	}
+	#p1 .bx-pager>div{
+		float: left;
+		width: 20px;
+	}
+	#p1 .bx-pager>div>a{
+		text-decoration: none;
+	}
+	#content>div>h2{
+		text-align: center;
+		text-transform: capitalize;
+		margin: 20px 0px;
+	}
+	#p3 table,#p4 table{
+		margin: 10px auto;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	#p3 table,#p3 table th,#p3 table td,
+	#p4 table,#p4 table th,#p4 table td{
+		border: 1px solid gray;
+	}
+	#p3 table>tbody>tr>td,
+	#p4 table>tbody>tr>td{
+		text-align: center;
+	}
+	#p3 table>tbody>tr>td>a,
+	#p4 table>tbody>tr>td>a{
+		display: block;
+		height: 30px;
+	}
+	#p3 table>tbody>tr>td:first-child,
+	#p4 table>tbody>tr>td:first-child {
+		width: 80px;
+	}
+	#p3 table>tbody>tr>td:first-child+td,
+	#p4 table>tbody>tr>td:first-child+td {
+		padding-left: 20px;
+	}
+	#p3 table>tbody>tr>td:first-child+td+td,
+	#p3 table>tbody>tr>td:first-child+td+td+td,
+	#p4 table>tbody>tr>td:first-child+td+td,
+	#p4 table>tbody>tr>td:first-child+td+td+td{
+		width: 100px;
+	}
+	#popup{
+		position:fixed;
+		top:0px;left:0px;
+		background-color: rgba(0,0,0,0.3);
+		width: 100%;
+		height: 100%;
+	}
+	#popup>div{
+		background-color: white;
+		width: 300px;
+		margin:  0px auto;
+		margin-top: 100px;
+		padding: 50px;
+		border-radius: 10px;
+	}
+	#popup>div>form{
+		width: 300px;
+	}
+	#popup>div>form>div{
+		margin-bottom: 10px;
+	}
+	#popup>div>form>div>label{
+		width: 100%;
+		display: inline-block;
+	}
+	#popup>div>form>div>input{
+		width: 300px;
+	}
+	#popup>div>form>div>textarea{
+		width: 300px;
+		height: 150px;
+	}
+	#popup>div>form>div>button{
+		width: 300px;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+	var readOnly;
+	var bbsNumParsing=function(num){
+		$('#popup').fadeIn(500);
+		$.get('bbs.xml','num='+num,function(data){
+			console.log(data,$(data).find('sub'));
+			$('#popup form div').eq(0).find('input').val($(data).find('sub').html());
+			$('#popup form div').eq(1).find('input').val($(data).find('id').html())
+			$('#popup form div').eq(2).find('input').val($(data).find('nalja').html())
+			$('#popup form div').eq(3).find('textarea').val($(data).find('content').html());
+			$('#popup form input:hidden').val(num);
+		});
+		
+	};
+	var addXml=function(){
+		$.ajax({
+			url:'add.xml',
+			type:'post',
+			contentType:'application/x-www-form-urlencoded',
+			data:$('#popup form').serialize(),
+			success:function(){
+				$('#popup').click();
+				xmlParsing();
+			}
+		});
+	};
+	var delXml=function(){
+		$.post('delete.xml',$('#popup form').serialize(),function(e){
+			$('#popup').click();
+			xmlParsing();
+		});
+		
+	};
+	var editXml=function(){
+		$.ajax({
+			url:'bbsEdit.xml',
+			type:'post',
+			contentType:'application/x-www-form-urlencoded',
+			data:$('#popup form').serialize(),
+			success:function(){
+				$('#popup').click();
+				xmlParsing();
+			}
+		});
+	};
+	var jsonParsing=function(){
+		$('#p4 table>tbody').empty();
+		/* 
+		$.ajax({
+			url:'bbsList.json',
+			type:'get',
+			dataType:'json',
+			success:function(data){
+				data.bbs.forEach(function(ele,idx){
+					$('<tr/>')
+						.append('<td><a href="#'+ele.num+'">'+ele.num+'</a></td>')
+						.append('<td><a href="#'+ele.num+'">'+ele.sub+'</a></td>')
+						.append('<td><a href="#'+ele.num+'">'+ele.id+'</a></td>')
+						.append('<td><a href="#'+ele.num+'">'+ele.nalja+'</a></td>')
+						.appendTo('#p4 table>tbody');
+				});
+			},
+			error:function(a,b,c){
+				alert("err");
+				console.log(a,b,c);
+			}
+		});
+		*/
+		
+		$.getJSON('bbsList.json',function(data){
+			data.bbs.forEach(function(ele,idx){
+				$('<tr/>')
+					.append('<td><a href="#'+ele.num+'">'+ele.num+'</a></td>')
+					.append('<td><a href="#'+ele.num+'">'+ele.sub+'</a></td>')
+					.append('<td><a href="#'+ele.num+'">'+ele.id+'</a></td>')
+					.append('<td><a href="#'+ele.num+'">'+ele.nalja+'</a></td>')
+					.appendTo('#p4 table>tbody');
+			});
+		}); 
+	};
+
+	var xmlParsing=function(){
+		$.get('bbsList.xml',function(data){
+			$('#p3 table>tbody').empty();
+			$(data).find('row').each(function(idx,ele){
+				var num=$(ele).find('num').text();
+				var sub=$(ele).find('sub').text();
+				var id=$(ele).find('id').text();
+				var nalja=$(ele).find('nalja').text();
+				$('<tr/>')
+					.append($('<td/>').append('<a href="#'+num+'">'+num+"</a>"))
+					.append($('<td/>').append('<a href="#'+num+'">'+sub+"</a>"))
+					.append($('<td/>').append('<a href="#'+num+'">'+id+"</a>"))
+					.append($('<td/>').append('<a href="#'+num+'">'+nalja+"</a>"))
+					.appendTo('#p3 table>tbody');
+			});
+		},"xml");
+	};
+	var homeCB=function(e){
+		e.preventDefault();
+		$('#p1').show().next().hide().next().hide().next().hide();
+		};
+	var introCB=function(e){
+		e.preventDefault();
+		$('#p1').hide().next().show().next().hide().next().hide();
+		
+		};
+	var bbsCB=function(e){
+		e.preventDefault();
+		$('#p1').hide().next().hide().next().show().next().hide();
+		xmlParsing();
+		};
+	var loginCB=function(e){
+		e.preventDefault();
+		$('#p1').hide().next().hide().next().hide().next().show();
+		jsonParsing();
+		};
+	$(function(){
+		readOnly=$('#popup').find('[readonly]');
+		$('#popup').click(function(e){
+			e.stopPropagation();
+			$('#popup').fadeOut(500);
+			$('#popup').find('h2').text('상세 페이지');
+			$('#popup').find('[disabled]').parent().show();
+			readOnly.prop('readonly',true);
+			$('#popup').find('button').eq(0).html('수정').next().show();
+		});
+		$('#popup>div').click(function(e){e.stopPropagation();});
+		$('#popup').fadeOut();
+		$('#p1 .slider').bxSlider({auto:true,prevText:'<',nextText:'>'});
+		$('#menu a')
+			.eq(0).click(homeCB)
+			.end().eq(1).click(introCB)
+			.end().eq(2).click(bbsCB)
+			.end().eq(3).click(loginCB);
+		$('#menu a').eq(0).click();
+		$('#p3 table').on('click','a',function(e){
+			e.preventDefault();
+			var num=$(e.target).attr('href').replace('#','');
+			bbsNumParsing(num);
+		});
+		
+		$('#popup button').eq(0).click(function(e){
+			if($('#popup h2').html()=='상세 페이지'){
+				$('#popup h2').html('수정 페이지');
+				readOnly.prop('readonly',false);
+			}else if($('#popup h2').html()=='수정 페이지'){
+				editXml();
+				$('#popup h2').html('상세 페이지');
+				readOnly.prop('readonly',true);
+			}else if($('#popup h2').html()=='입력 페이지'){
+				addXml();
+			}
+		});
+		$('#popup button').eq(1).click(function(e){
+			delXml();
+		});
+		$('#p3 table+p>a').click(function(e){
+			$('#popup').fadeIn(500);
+			$('#popup').find('h2').text('입력 페이지');
+			$('#popup').find('[disabled]').parent().hide();
+			readOnly.prop('readonly',false);
+			$('#popup').find('button').eq(0).html('입력').next().hide();
+			return false;
+		});
+	});
+</script>
+</head>
+<body>
+<div id="popup">
+	<div>
+		<h2>상세 페이지</h2>
+		<form action="#">
+			<input type="hidden" name="num">
+			<div>
+				<label>제목</label>
+				<input name="sub" readonly="readonly"/>
+			</div>
+			<div>
+				<label>글쓴이</label>
+				<input name="id" readonly="readonly"/>
+			</div>
+			<div>
+				<label>날짜</label>
+				<input type="date" name="nalja" disabled="disabled"/>
+			</div>
+			<div>
+				<textarea name="content" readonly="readonly"></textarea>
+			</div>
+			<div>
+				<button type="button">수정</button>
+				<button type="button">삭제</button>
+			</div>
+		</form>
+	</div>
+</div>
+	<div class="container">
+		<div class="header">
+			<h1>인제대학교</h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="#">home</a></li>
+				<li><a href="#">intro</a></li>
+				<li><a href="#">bbs(xml)</a></li>
+				<li><a href="#">bbs(json)</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<div id="p1">
+				<div class="slider">
+					<div><img src="imgs/main1.jpg"/></div>
+					<div><img src="imgs/main2.jpg"/></div>
+					<div><img src="imgs/main3.jpg"/></div>
+					<div><img src="imgs/main4.jpg"/></div>
+					<div><img src="imgs/main5.jpg"/></div>
+					<div><img src="imgs/main6.jpg"/></div>
+				</div>
+			</div>
+			<div id="p2">
+				<h2>intro page</h2>
+				<img alt="" src="https://www.inje.ac.kr/kor/assets/images/sub/gimhae-campus-1.jpg">
+			</div>
+			<div id="p3">
+				<h2>bbs page(xml)</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>글번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<p><a href="#">입력</a></p>
+			</div>
+			<div id="p4">
+				<h2>bbs page(json)</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>글번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+		<div id="footer">
+			<p>김해캠퍼스 (50834) 경남 김해시 인제로 197</p>
+			<p>Copyright &copy; 2024 INJE University. All rights reserved.</p>
+		</div>
+	</div>
+</body>
+</html>

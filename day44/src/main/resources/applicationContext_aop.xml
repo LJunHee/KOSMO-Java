@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="module" class="com.gimhae.aop.module.ModuleImpl"></bean>
+	
+	<bean id="svc" class="com.gimhae.service.Service02">
+		<constructor-arg ref="module"/>
+	</bean>
+	
+	<bean id="before" class="com.gimhae.aop.BeforeLog"></bean>
+	<bean id="afterReturn" class="com.gimhae.aop.AfterSuccessLog"></bean>
+	<bean id="afterErr" class="com.gimhae.aop.AfterErrLog"></bean>
+	<bean id="around" class="com.gimhae.aop.AroundLog"></bean>
+	<!-- 
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="module"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>afterReturn</value>
+			</list>
+		</property>
+	</bean>
+	 -->
+	<!-- 
+	<bean id="pointcut" 
+	class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedNames">
+			<array>
+				<value>afunc01</value>
+				<value>bfunc03</value>
+			</array>
+		</property>
+	</bean>
+	 -->
+	<bean id="pointcut"
+	class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="patterns">
+			<list>
+				<value>.*afunc.*</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="beforeAdvisor" 
+		class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="before"></property>
+		<property name="pointcut" ref="pointcut"></property>
+	</bean>
+	
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames" value="module"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>beforeAdvisor</value>
+				<!-- 
+				<value>before</value>
+				<value>afterReturn</value>
+				<value>afterErr</value>
+				<value>around</value>
+				 -->
+			</list>
+		</property>
+	</bean>
+</beans>
+

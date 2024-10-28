@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        input[type^="t"]{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="id">id</label>
+        <input type="text" id="id" name="id" />
+        <label for="pw">pw</label>
+        <input type="password" id="pw" name="pw" />
+        <label for="num">num</label>
+        <input type="number" id="num" name="num" />
+        <label for="tel">tel</label>
+        <input type="tel" id="tel" name="tel" />
+        <label for="url">url</label>
+        <input type="url" id="url" name="url" />
+        <label for="email">email</label>
+        <input type="email" id="email" name="email" />
+        <label for="range">range</label>
+        <input type="range" id="range" name="range" value="22" min="11" max="33" />
+        <label for="color">color</label>
+        <input type="color" id="color" name="color" />
+        <label for="date">date</label>
+        <input type="date" id="date" name="date" />
+        <label for="time">time</label>
+        <input type="time" id="time" name="time" />
+        <label for="datetime">datetime</label>
+        <input type="datetime-local" id="datetime" name="datetime" />
+        <input type="submit" value="전송1"/>
+        <button>전송2</button>
+        <button type="submit">전송3</button>
+    </form>
+    <input type="button" value="전송4"/>
+        <button>전송5</button>
+</body>
+</html>

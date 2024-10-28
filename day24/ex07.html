@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="ex08.css">
+    <style rel="stylesheet" type="text/css">
+        /*
+        선택자의 우선순위
+        인라인 > id선택자 > class선택자 > tag선택자
+
+        */
+        #id1{
+            background-color: aqua;
+        }
+        .cl1{
+            background-color: green;
+        }
+        p{
+            background-color: red;
+        }
+        #h5{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="h5" style="color:red;background-color: gray;">css</h1>
+    <p>css 설명</p>
+    <h2>소제목1</h2>
+    <p class="cl1" id="id1">설명1</p>
+    <h2>소제목2</h2>
+    <p id="id2">설명2</p>
+    <h2>소제목3</h2>
+    <p class="cl1">설명3</p>
+    <h2>소제목4</h2>
+    <p>설명4</p>
+</body>
+</html>

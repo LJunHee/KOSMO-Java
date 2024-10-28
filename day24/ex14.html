@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel = "stylesheet" type="text/css">
+        div {
+            border: 1px solid gray;
+            width: 100px;
+            height: 100px;
+        }
+        div:nth-child(2){
+            background-color: aqua;
+            display: none; /* 자리 차지 X */
+        }
+        div:nth-child(3) {
+            opacity: 0; /* 자리 차지 O */
+        }
+        div:nth-child(4){
+            visibility: hidden; /* 자리 차지 O */
+        }
+    </style>
+</head>
+<body>
+    <div>box1</div>
+    <div>box2</div>
+    <div>box3</div>
+    <div>box4</div>
+    <div>box5</div>
+</body>
+</html>

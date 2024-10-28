@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function func01(){
+            console.log('func01 run');
+            return ;
+        }
+
+        // var f1=func01;
+        var f1=function (){
+            console.log('func01 run');
+        };
+        // var f2=a=>console.log(a+'02');
+        console.log(typeof f1);
+        // f1();
+        function func02(a){
+            console.log('args1='+a);
+        }
+        function func03(a,b){
+            console.log('args1='+a);
+            console.log('args2='+b);
+        }
+        function func04(){
+            for(var ele of arguments){
+                console.log(ele);
+            }
+            return 'f4';
+        }
+        // var msg=func01();
+        // console.log(typeof msg); //undefined type // null type
+        //func04(1111,2222,'item3','item4',true);
+        function func05(a){
+            console.log('before.....');
+            a();
+            console.log('after.....');
+        }
+        func05(function(){console.log('방금만든 함수');});
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

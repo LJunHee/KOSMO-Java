@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>day40</display-name>
+  <welcome-file-list>
+	<welcome-file>index.do</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>framework</servlet-name>
+  	<servlet-class>com.gimhae.framework.mvc.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>/index.do</param-name>
+  		<param-value>com.gimhae.controller.IndexController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/intro.do</param-name>
+  		<param-value>com.gimhae.controller.IntroController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/list.do</param-name>
+  		<param-value>com.gimhae.controller.ListController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/add.do</param-name>
+  		<param-value>com.gimhae.controller.AddController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/insert.do</param-name>
+  		<param-value>com.gimhae.controller.InsertController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/detail.do</param-name>
+  		<param-value>com.gimhae.controller.DetailController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/delete.do</param-name>
+  		<param-value>com.gimhae.controller.DeleteController</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>framework</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var xhr,div,tbody,temp;
+window.onload=function(){
+	div=document.querySelector('div');
+	tbody=document.querySelector('tbody');
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4&& xhr.status==200){
+			var xml=xhr.responseXML;
+//		console.log(xml.childNodes[0].children[0].children[1].childNodes[0].nodeValue);
+			var root=xml.childNodes[0].innerHTML;
+			temp=document.createElement('div');
+			temp.innerHTML=root;
+			var arr=temp.querySelectorAll('student');
+			for(var i=0; i<arr.length; i++){
+				var stu=arr[i];
+				var num=stu.querySelector('num').innerHTML;
+				var name=stu.querySelector('name').innerHTML;
+				var kor=stu.querySelector('kor').innerHTML;
+				var eng=stu.querySelector('eng').innerHTML;
+				var math=stu.querySelector('math').innerHTML;
+				tbody.innerHTML+='<tr><td>'+num+'</td><td>'+name+'</td><td>'+kor
+							+'</td><td>'+eng+'</td><td>'+math+'</td></tr>';
+			}
+		}
+	};
+	
+	xhr.open('get','stu.xml');
+	xhr.send();
+};
+
+</script>
+</head>
+<body>
+	<h1>Ajax 통신</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>학번</th>
+				<th>이름</th>
+				<th>국어</th>
+				<th>영어</th>
+				<th>수학</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

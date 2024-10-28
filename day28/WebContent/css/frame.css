@@ -1,0 +1,85 @@
+*{
+margin = 0px;
+padding = 0px;
+}
+
+body>div {
+	width : 800px;
+	margin : 0px auto;
+}
+
+.header, #menu{
+	clear : both;
+}
+
+.header>h1{
+	width : 141px;
+	height : 41px;
+	background-image : url("imgs/logo.png");
+	text-indent: -9999px;
+	float : left;
+}
+.header>div{
+	float : right;
+}
+
+.header>div>form{
+	
+}
+.header>div>form>input{
+	width: 100px;
+	border: 1px solid gray;
+}
+
+.header>div>form>button{
+	width : 40px;
+	background-color: green;	
+	border: 1px solid green;
+	color : white;
+	font-weight : bold;
+}
+
+#menu {
+	height : 50px;
+	background-color: darkgreen;
+	overflow : hidden;
+}
+
+#menu>ul {
+	list-style : none;
+	width : 400px;
+	margin : 0px auto;
+}
+#menu>ul>li {
+	float : left;
+	width : 98px;
+	margin : 0px 1px;
+}
+#menu>ul>li>a {
+	height : 50px;
+	display : block;
+	text-decoration : none;
+	text-align : center;
+	line-height : 50px;
+	text-transform : uppercase;
+}
+
+#menu>ul>li>a:visited,#menu>ul>li>a:link {
+	color:white;
+}
+
+#menu>ul>li>a:hover,#menu>ul>li>a:active {
+	background-color: green;
+	color:yellow;
+}
+
+#content {
+	padding-bottom : 100px;
+}
+
+#footer {
+	text-align : center;
+	border-top : green double 2px;
+	border-bottom : green solid 1px;
+	padding: 30px;
+}

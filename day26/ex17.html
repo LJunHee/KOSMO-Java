@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{width: 300px;height: 300px;background-color:bisque;}
+        div>div{width: 200px;height: 200px;background-color: blue;}
+        div>div>div{width: 100px;height: 100px;background-color: aqua;}
+    </style>
+    <script type="text/javascript">
+        var box1,box2,box3;
+        var myClick=function(e){
+            console.log(e.target.className);
+        };
+        window.onload=function(){
+            box1=document.querySelector('div');
+            box2=document.querySelector('div>div');
+            box3=document.querySelector('div>div>div');
+            // box1.onclick=myClick;
+            // box2.onclick=myClick;
+            // box3.onclick=myClick;
+            box1.onclick=function(e){
+                e.stopPropagation();
+                console.log('box1');
+            }
+            box2.onclick=function(e){
+                e.stopPropagation();
+                console.log('box2');
+            }
+            box3.onclick=function(e){
+                e.stopPropagation();
+                console.log('box3');
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+</body>
+</html>

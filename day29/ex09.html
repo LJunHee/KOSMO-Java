@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src = "js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('form').submit(function(e){
+                if($('input').eq(0).val()=='')
+                    return false;
+                if($('input').eq(1).val()=='')
+                    return false;
+            });
+
+            $('input').eq(0).focus(function(e){
+                $(e.target).val();
+            }).blur(function(e){
+                if($(e.target).val().length<4) {$(e.target).focus();}
+            });
+
+            $('input').eq(1).focusin(function(e){
+                $(e.target).val();
+            }).blur(function(e){
+                if($(e.target).val().length<4) alert ('4자이상');
+            });
+            $('input').eq(2).keyup(function(e){
+                if($(e.target).val().length==3) $(e.target).next().focus();
+            });
+            $('input').eq(3).keyup(function(e){
+                if($(e.target).val().length==4) $(e.target).next().focus();
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <form action="#">
+        <div><label>id</label><input type="text" name="id"></div>
+        <div><label>pw</label><input type="password" name="pw"></div>
+        <div>
+            <input type="radio" name="ra"><label>item1</label>
+            <input type="radio" name="ra"><label>item2</label>
+            <input type="radio" name="ra"><label>item3</label>
+        </div>
+        <div>
+            <input type="checkbox"><label>item1</label>
+            <input type="checkbox"><label>item2</label>
+            <input type="checkbox"><label>item3</label>
+        </div>
+        <div>
+            <select>
+                <option>item1</option>
+                <option>item2</option>
+                <option>item3</option>
+                <option>item4</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">전송</button>
+            <button type="reset">취소</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src = "js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('input')
+                .keydown(function(e){console.log('down',e.key, e.keyCode);})
+                .keypress(function(e){console.log('press',e.key, e.keyCode);})
+                .keyup(function(e){
+                    console.log('up',e.key, e.keyCode,$(e.target).val());
+                    //$('.target').html($(e.target).val()+"<br/>");
+                })
+
+            $('input')
+                .change(function(e){
+                    $('.target').html($('.target').html()+$(e.target).val()+"<br/>");
+                    $(e.target).val("");
+                })
+        });
+    </script>
+</head>
+<body>
+    <h1>key event</h1>
+    <div class="target"><input /></div>
+</body>
+</html>

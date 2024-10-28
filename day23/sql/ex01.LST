@@ -1,0 +1,438 @@
+SQL> create table lec01(
+  2  num number,
+  3  name varchar2(5),
+  4  nalja date
+  5  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into lec01 values(null,null,null);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from lec01;
+
+       NUM NAME       NALJA                                                     
+---------- ---------- --------                                                  
+                                                                                
+
+SQL> insert into lec01 values(2,'','');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from lec01;
+
+       NUM NAME       NALJA                                                     
+---------- ---------- --------                                                  
+                                                                                
+         2                                                                      
+
+SQL> select * from lec01 where num is null;
+
+       NUM NAME       NALJA                                                     
+---------- ---------- --------                                                  
+                                                                                
+
+SQL> select count(*) from lec01 where num is null;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select count(*) from lec01 where name is null;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select * from lec01 where name is '';
+select * from lec01 where name is ''
+                                  *
+1행에 오류:
+ORA-00908: 누락된 NULL 키워드 
+
+
+SQL> select * from lec01 where name = '';
+
+선택된 레코드가 없습니다.
+
+SQL> select * from lec01 where date = '';
+select * from lec01 where date = ''
+                          *
+1행에 오류:
+ORA-00936: 누락된 표현식 
+
+
+SQL> select * from lec01 where date is '';
+select * from lec01 where date is ''
+                          *
+1행에 오류:
+ORA-00936: 누락된 표현식 
+
+
+SQL> select * from lec01 where nalja = '';
+
+선택된 레코드가 없습니다.
+
+SQL> create table lec02(
+  2  num number not null,
+  3  name varchar2(5) not null,
+  4  nalja date not null
+  5  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into lec02 values(null,'','');
+insert into lec02 values(null,'','')
+                         *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."LEC02"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into lec02 values(null,'',sysdate);
+insert into lec02 values(null,'',sysdate)
+                         *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."LEC02"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into lec02 (num,name) values(2,'bb');
+insert into lec02 (num,name) values(2,'bb')
+*
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."LEC02"."NALJA") 안에 삽입할 수 없습니다 
+
+
+SQL> create table lec03(
+  2  num number,
+  3  
+SQL> 
+SQL> create table lec03(
+  2  idx number,
+  3  num number,
+  4  
+SQL> 
+SQL> create table lec03(
+  2  idx number,
+  3  num number unique,
+  4  name varchar2(5) unique
+  5  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into lec03 values(1,1111,'test');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec03 values(2,1111,'test2');
+insert into lec03 values(2,1111,'test2')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004000)에 위배됩니다 
+
+
+SQL> insert into lec03 values(2,2222,'test2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec03 values(3,3333,'test');
+insert into lec03 values(3,3333,'test')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004001)에 위배됩니다 
+
+
+SQL> insert into lec03 values(3,3333,'');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec03 values(4,4444,'');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> create table lec04(
+  2  idx number primary key,
+  3  num number unique not null
+  4  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into lec04 values(1111,1111);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec04 values(2222,2222);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec04 values(3333,2222);
+insert into lec04 values(3333,2222)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004004)에 위배됩니다 
+
+
+SQL> insert into lec04 values(3333,null);
+insert into lec04 values(3333,null)
+                              *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."LEC04"."NUM") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into lec04 values(null,3333);
+insert into lec04 values(null,3333)
+                         *
+1행에 오류:
+ORA-01400: NULL을 ("SCOTT"."LEC04"."IDX") 안에 삽입할 수 없습니다 
+
+
+SQL> insert into lec04 values(3333,3333);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> ed emp02.sql
+
+SQL> @emp02.sql
+
+테이블이 생성되었습니다.
+
+
+테이블이 생성되었습니다.
+
+SQL> desc emp5
+ERROR:
+ORA-04043: emp5 객체는 존재하지 않습니다. 
+
+
+SQL> desc emp02;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ SABUN                                     NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(5)
+ IDX                                                NUMBER
+
+SQL> insert into emp02 values(1111,'test',1);
+insert into emp02 values(1111,'test',1)
+*
+1행에 오류:
+ORA-02291: 무결성 제약조건(SCOTT.SYS_C004009)이 위배되었습니다- 부모 키가
+없습니다 
+
+
+SQL> desc dept02;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ IDX                                       NOT NULL NUMBER
+ LOC                                       NOT NULL VARCHAR2(6)
+
+SQL> insert into dept02 values(1,'서울');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into emp02 values (1111,'tester',1);
+insert into emp02 values (1111,'tester',1)
+                               *
+1행에 오류:
+ORA-12899: "SCOTT"."EMP02"."NAME" 열에 대한 값이 너무 큼(실제: 6, 최대값: 5) 
+
+
+SQL> alter table emp02 where name varchar2(6);
+alter table emp02 where name varchar2(6)
+                  *
+1행에 오류:
+ORA-01735: 부적합한 ALTER TABLE 옵션입니다 
+
+
+SQL> insert into dept02 values(1,'부산');
+insert into dept02 values(1,'부산')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004006)에 위배됩니다 
+
+
+SQL> ed emp02.sql
+
+SQL> @emp02.sql
+create table dept02(
+             *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+create table emp02(
+             *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> alter table emp02 modify name varchar2(6);
+
+테이블이 변경되었습니다.
+
+SQL> insert into emp02 values (1111,'tester',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into dept02 values(2,'부산');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into emp02 values (2222,'tester',2);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> get emp02.sql
+  1  create table dept02(
+  2  idx number primary key,
+  3  loc varchar2(6) not null
+  4  );
+  5  create table emp02(
+  6  sabun number primary key,
+  7  name varchar2(6) not null,
+  8  idx number references dept02(idx)
+  9* );
+ 10  drop table dept02;
+);
+ *
+4행에 오류:
+ORA-00911: 문자가 부적합합니다 
+
+
+SQL> drop table dept02;
+drop table dept02
+           *
+1행에 오류:
+ORA-02449: 외래 키에 의해 참조되는 고유/기본 키가 테이블에 있습니다 
+
+
+SQL> ed check.sql
+
+SQL> @check.sql
+
+테이블이 생성되었습니다.
+
+SQL> get check.sql
+  1  create table lec05(
+  2  num number primary key,
+  3  name varchar2(6) not null,
+  4  gender char(1) check (gender in ('m','w'))
+  5* );
+SQL> insert into lec05 values (1111,'test','m');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec05 values (2222,'tester','2');
+insert into lec05 values (2222,'tester','2')
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(SCOTT.SYS_C004011)이 위배되었습니다 
+
+
+SQL> insert into lec05 values (2222,'tester','w');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec05 values (3333,'tester','3');
+insert into lec05 values (3333,'tester','3')
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(SCOTT.SYS_C004011)이 위배되었습니다 
+
+
+SQL> ed check02.sql
+
+SQL> 
+SQL> @ check02.sql
+
+테이블이 생성되었습니다.
+
+SQL> insert into lec06 values (1111,'tester',1);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec06 values (1111,'tester',80);
+insert into lec06 values (1111,'tester',80)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004015)에 위배됩니다 
+
+
+SQL> @ check02.sql
+create table lec06(
+             *
+1행에 오류:
+ORA-00955: 기존의 객체가 이름을 사용하고 있습니다. 
+
+
+SQL> get lec06;
+SP2-0160: "lec06.sql"을 열 수가 없습니다.
+SQL> get table lec06;
+SP2-0423: 부적합한 GET 명령어입니다.
+SQL> get check02.sql
+  1  create table lec06(
+  2  num number primary key,
+  3  name varchar2(6) not null,
+  4  age number(2) check (age between 1 and 80)
+  5* );
+SQL> insert into lec06 values (1111,'tester',80);
+insert into lec06 values (1111,'tester',80)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004015)에 위배됩니다 
+
+
+SQL> insert into lec06 values (1111,'tester',79);
+insert into lec06 values (1111,'tester',79)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.SYS_C004015)에 위배됩니다 
+
+
+SQL> insert into lec06 values (2222,'tester',80);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> create table lec07(
+  2  num number primary key,
+  3  sub varchar2(10) default '제목없음',
+  4  nalja date default sysdate,
+  5  
+SQL> create table lec07(
+  2  num number primary key,
+  3  sub varchar2(12) default '제목없음',
+  4  nalja date default sysdate,
+  5  su number default 100
+  6  );
+
+테이블이 생성되었습니다.
+
+SQL> insert into lec07 values(1,'test',sysdate,1111);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into lec07 (num) values(2);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from lec07;
+
+       NUM SUB                      NALJA            SU                         
+---------- ------------------------ -------- ----------                         
+         1 test                     24/08/23       1111                         
+         2 제목없음                 24/08/23        100                         
+
+SQL> insert into lec07 values(3,null,null,null);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from lec07;
+
+       NUM SUB                      NALJA            SU                         
+---------- ------------------------ -------- ----------                         
+         1 test                     24/08/23       1111                         
+         2 제목없음                 24/08/23        100                         
+         3                                                                      
+
+SQL> exite
+SP2-0042: 알 수 없는 명령어 "exite" - 나머지 줄 무시.
+SQL> exit

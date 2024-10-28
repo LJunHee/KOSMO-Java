@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "https://ibatis.apache.org/dtd/sql-map-2.dtd">
+        <sqlMap>
+        	<select id="empList" resultClass="com.gimhae.emp.model.EmpVo">
+        	select * from emp38 order by empno desc
+        	</select>
+        	<select id = "oneList" parameterClass="int" resultClass = "com.gimhae.emp.model.EmpVo">
+        	select * from emp38 where empno=#val#
+        	</select>
+        	<insert id = "insertOne" parameterClass="com.gimhae.emp.model.EmpVo">
+        	insert into emp38 (ename,pay,hiredate) values (#ename#,#pay#,now())
+        	</insert>
+        	<update id = "updateOne" parameterClass="com.gimhae.emp.model.EmpVo">
+        	update emp38 set ename=#ename#, pay=#pay# where empno = #empno#
+        	</update>
+        	<delete id = "deleteOne" parameterClass="int">
+        	delete from emp38 where empno=#val#
+        	</delete>
+        </sqlMap>

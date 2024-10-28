@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+      $(document).on('ready',function () {
+        //$('button').click(function(){
+        //    console.log('클릭');
+        //});
+        // jQuery 1.3+
+        //$('button').after('<button>new1</button>');
+        //$('button').live('click',function(e){
+        //    console.log('클릭');
+        //});
+        // jQuery 1.4.3+
+        //$(document).delegate('button','click',function(e){
+        //     console.log(e.target.innerHTML);
+        //});
+        // jQuery 1.7+
+        //$(document).on("click", "button", function (e) {
+        //    console.log(e.target,this);
+        //    $(e.target).after('<button>ne'+(cnt++)+'</button>');
+        //    });
+            //$('button').one('click',function(e){
+                //    console.log('클릭');
+                //});
+            var callback=function(e){
+                alert('클릭');
+            }
+            $('button').on('click',function(e){
+                console.log('클릭');
+                $('button').off('click',callback);
+            });
+            $('button').on('click',callback);
+
+        });
+        var cnt = 1;
+    </script>
+  </head>
+  <body>
+    <h1>event binding</h1>
+    <button>ord1</button>
+  </body>
+</html>

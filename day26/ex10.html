@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel = "stylesheet" type="text/css">
+        div {}
+    </style>
+</head>
+<body>
+    <div>
+        <img src = "imgs/main1.jpg"/>
+    </div>
+        <script type="text/javascript">
+            var img = document.getElementsByTagName('img')[0];
+            var num = 1;
+            setInterval(function(){
+                if(num<6) num++;
+                else num = 1;
+                img.src = 'imgs/main'+num+'.jpg';
+            },1000);
+        </script>
+</body>
+</html>

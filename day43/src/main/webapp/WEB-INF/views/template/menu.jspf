@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="text-center bg-primary">
+	<ul class="list-inline">
+		<li><a class="bg-primary" href="${pageContext.request.contextPath }/">home</a></li>
+		<li><a class="bg-primary" href="${pageContext.request.contextPath }/intro.do">intro</a></li>
+		<li><a class="bg-primary" href="${pageContext.request.contextPath }/emp/list.do">emp</a></li>
+		<li><a class="bg-primary" href="${pageContext.request.contextPath }/login/login.do">login</a></li>
+	</ul>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">

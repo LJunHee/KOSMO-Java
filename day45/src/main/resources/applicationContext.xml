@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+ 	<bean class = "org.springframework.context.support.PropertySourcesPlaceholderConfigurer"
+ 	p:location="classpath:/db.properties"
+ 	/>
+ 
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="com.mysql.cj.jdbc.Driver"
+		p:url="${db.mysql.url}"
+		p:username="${db.mysql.user}" p:password="${db.mysql.password}"
+	/>
+
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource"
+	/>
+	<bean id="definition" class="org.springframework.transaction.support.DefaultTransactionDefinition"/>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"
+	/>
+
+	<bean id="empDao" 
+		class="com.gimhae.model.EmpDaoImpl"
+		p:jdbcTemplate-ref="jdbcTemplate"
+		p:transactionManager-ref="transactionManager"
+		p:definition-ref="definition"
+	/>
+	
+	<bean id="advice" class="com.gimhae.aop.AroundLog"/>
+	<bean id="pointcut"
+	class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedNames">
+			<list>
+				<value>pullList</value>
+				<value>getList</value>
+				<value>addList</value>
+				<value>setList</value>
+				<value>rmList</value>
+				<value>listSize</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="pointcutAdvisor"
+	class="org.springframework.aop.support.DefaultPointcutAdvisor"
+	p:pointcut-ref="pointcut"
+	p:advice-ref="advice"
+	/>
+	<bean 
+	class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"
+	p:beanNames="empDao"
+	p:interceptorNames="pointcutAdvisor"
+	/>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

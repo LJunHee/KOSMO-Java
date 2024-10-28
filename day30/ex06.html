@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel = "stylesheet" type = "text/css">
+        body>div:first-child{}
+        .slider{}
+        .slider>ul{}
+        .slider>ul>li{}
+        .slider img{
+            height: 200px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        var bx;
+        $(function(){
+            bx = $('.slider>ul').bxSlider({
+                minSlides:3,
+                maxSlides:3,
+                moveSlides:1,
+                slideWidth:200,
+                auto:true,
+                onSlideBefore : function(a,b,c){
+                    var img = $(a[0]).html();
+                    $('body>div').first().html(img);
+                },
+                onSliderLoad : function(idx){
+                    var img = $('.slider li').eq(idx+3).html();
+                    $('.slider li').first().html(img);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="slider">
+        <ul>
+            <li><img src="imgs/img01.jpg"></li>
+            <li><img src="imgs/img02.jpg"></li>
+            <li><img src="imgs/img03.jpg"></li>
+            <li><img src="imgs/img04.jpg"></li>
+            <li><img src="imgs/img05.jpg"></li>
+            <li><img src="imgs/img06.jpg"></li>
+        </ul>
+    </div>
+</body>
+</html>

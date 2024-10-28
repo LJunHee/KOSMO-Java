@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type = "text/javascript">
+var tbody,xhr;
+var callback = function(e){
+	if(xhr.readyState==4 && xhr.status ==200){
+		var msg = xhr.response;
+		var json = JSON.parse(msg);
+		for(var stu of json.students) {
+			
+			var tr = '<tr>';
+			tr += '<td>'+stu.num+ '</td>';
+			tr += '<td>'+stu.name+ '</td>';
+			tr += '<td>'+stu.kor+ '</td>';
+			tr += '<td>'+stu.eng+ '</td>';
+			tr += '<td>'+stu.math+ '</td>';
+			tr += '</tr>';
+			tbody.innerHTML += tr;
+		}
+	}
+};
+window.onload=function(){
+	tbody=document.querySelector('tbody');
+	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange=callback;
+	xhr.open('get','stu.json');
+	xhr.send();
+};
+</script>
+</head>
+<body>
+	<h1>json parsing</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>학번</th>
+				<th>이름</th>
+				<th>국어</th>
+				<th>영어</th>
+				<th>수학</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</body>
+</html>

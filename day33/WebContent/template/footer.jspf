@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+				<!-- content end-->
+			</div>
+		</div>
+		<div class = "row" id = "footer">
+			<div class = "col-md-3"></div>
+			<div class = "col-md-6">
+				<address>
+					<p>김해캠퍼스 (50834) 경남 김해시 인제로 197</p>
+					<p>Copyright&copy; 2024 INJE University. All rights reserved.</p>			
+				</address>
+			</div>
+			<div class = "col-md-3"></div>
+		</div>
+	</div>

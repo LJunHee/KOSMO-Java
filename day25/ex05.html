@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        .header>h1{
+            background-image: url(imgs/logo.png);
+            width: 141px;
+            height: 41px;
+            text-indent: -999px;
+            float: left;
+        }
+        .header>div{float: right;}
+        .header{overflow: hidden;}
+        #menu{background-color: gray;overflow: hidden;}
+        #menu>ul{list-style: none;padding: 0px;width: 400px;margin: 0px auto;}
+        #menu>ul>li{float: left;width: 98px;margin: 0px 1px;}
+        #menu>ul>li>a{
+            display: block;
+            height: 50px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            background-color: darkgray;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <h1>인제대학교</h1>
+            <div>
+                <a href="#">login</a> /
+                <a href="#">join</a>
+            </div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div>
+                <img src="imgs/main1.jpg"/>
+                <img src="imgs/main2.jpg"/>
+                <img src="imgs/main3.jpg"/>
+                <img src="imgs/main4.jpg"/>
+                <img src="imgs/main5.jpg"/>
+                <img src="imgs/main6.jpg"/>
+            </div>
+        </div>
+        <div id="footer">
+            &copy; 2024
+        </div>
+    </div>
+</body>
+</html>

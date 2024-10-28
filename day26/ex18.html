@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var input,btn1,btn2,btn3;
+        var arr=[];
+        window.addEventListener('load',function(){
+            console.log(document.querySelector('h1').innerHTML);
+        });
+        var callback1=function(e){
+                console.log('버튼또다른이벤트');
+            };
+        window.onload=function(){
+            input=document.querySelector('input');
+            btn1=document.querySelector('button');
+            btn2=document.querySelector('button+button');
+            btn3=document.querySelector('button+button+button');
+            // btn.onclick=function(e){console.log('버튼이벤트');};
+            // btn.onclick=function(e){console.log('버튼또다른이벤트');};
+            // btn.addEventListener('click',function(e){
+            //     console.log('버튼클릭');
+            // });
+            // btn.addEventListener('click',callback1);
+            btn1.addEventListener('click',function(e){
+                var msg=input.value;
+                var func=function(e){
+                    console.log(msg+" 이벤트 기능");
+                };
+                arr.push(func);
+                btn2.addEventListener('click',func);
+            });
+            btn3.addEventListener('click',function(e){
+                btn2.removeEventListener('click',arr.shift());
+            });
+        };
+    </script>
+</head>
+<body>
+    <h1>DOM level3 event</h1>
+    <input/><button>add</button><button>function</button><button>remove</button>
+</body>
+</html>

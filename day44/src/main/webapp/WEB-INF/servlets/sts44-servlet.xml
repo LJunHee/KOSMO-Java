@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+<bean id = "empDao" class = "com.gimhae.emp.model.EmpDaoImpl"></bean>
+
+<!-- handler mapping -->
+<bean class = "org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="urlMap">
+		<map>
+			<entry key = "/index.do">
+				<value>index</value>
+			</entry>
+			<entry key = "/intro.do">
+				<value>intro</value>
+			</entry>
+			<entry key = "/emp/list.do">
+				<value>list</value>
+			</entry>
+		</map>
+	</property>
+</bean>
+<bean id = "index"
+class = "org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value = "index"/>
+</bean>
+<bean id = "intro"
+class = "org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value = "intro"></property>
+</bean>
+
+<bean id = "list"
+class = "com.gimhae.emp.controller.ListController">
+	<property name="empDao" ref = "empDao"></property>
+</bean>
+cut ct cut cut cunclkca pointe pscuetndna ndlaskdjdhasnfnklnasndnm,n meta <property>*.**</property>
+<!-- view resolver -->
+<bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 <property name="prefix" value = "/WEB-INF/views/"></property>	
+	<property name="suffix" value = ".jsp"></property>	
+</bean> 
+
+</beans>

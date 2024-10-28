@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type = "text/javascript">
+        var ul,ol;
+        window.onload=function(){
+            ul = document.querySelector('ul');
+            ol = document.querySelector('ol');
+            for(var i=0; i<ul.children.length; i++){
+                ul.children[i].firstElementChild.firstElementChild.style.width='100px';
+                ul.children[i].firstElementChild.firstElementChild.style.height='100px';
+            }
+            for(var i=0; i<3; i++){
+                var el = ul.children[i].cloneNode(true);
+                ul.appendChild(el);
+            }
+            ul.style.listStyle ='none';
+            for(var i = 0; i<ul.children.length; i++){
+                ul.children[i].style.float = 'left';
+            }
+            ul.style.width = 100 * ul.children.length+"px";
+            ul.style.paddingLeft = '0px';
+            var div = document.createElement('div');
+            div.appendChild(ul);
+            div.style.width = '300px';
+            div.style.overflow = 'hidden';
+            document.querySelector('body').appendChild(div);
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li><a href="#"><img src="imgs/img01.jpg"></a></li>
+    <li><a href="#"><img src="imgs/img02.jpg"></a></li>
+    <li><a href="#"><img src="imgs/img03.jpg"></a></li>
+    <li><a href="#"><img src="imgs/img04.jpg"></a></li>
+    <li><a href="#"><img src="imgs/img05.jpg"></a></li>
+    <li><a href="#"><img src="imgs/img06.jpg"></a></li>
+</ul>
+<ol></ol>
+</body>
+</html>

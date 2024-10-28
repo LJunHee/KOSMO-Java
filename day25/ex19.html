@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        console.log(typeof 1234);   // int      4byte
+        console.log(typeof 3.14);   // float    4byte
+        console.log(3.14+1);
+        var a=new Number(3);
+        var b=new Number(3);
+        console.log(a==b);
+        console.log(a===b);
+        console.log(typeof a);
+        console.log('------------------------------');
+        var msg1="abcdefg";
+        var msg2=msg1.slice(1,4);
+        console.log(msg1);
+        console.log(msg2);
+        var msg3=new String(msg1);
+        console.log(msg1==msg3);
+        console.log(msg1===msg3);
+        console.log(typeof msg3);
+        console.log('------------------------------');
+        var boo=new Boolean(true);
+        console.log(typeof boo);
+        console.log(true==boo);
+        console.log(true===boo);
+        console.log('------------------------------');
+        var arr1=[1,3,5,7];
+        arr1[5]=9;
+        console.log(arr1);
+        var arr2=new Array();/// new int[]{};
+        arr2.push('item4');  // [lang]
+        arr2.push('item5');
+        arr2.push('item6');
+        arr2.unshift('item3');  // [0]으로
+        arr2.unshift('item2');
+        arr2.unshift('item1');
+        //console.log(arr2);
+        // console.log(arr2.pop());
+        // console.log(arr2.pop());
+        // console.log(arr2.pop());
+        // console.log(arr2.shift());
+        // console.log(arr2.shift());
+        // console.log(arr2.shift());
+        for(var i=0; i<arr2.length; i++){
+            console.log(arr2[i]);
+        }
+        console.log('-----------------------');
+        // while(arr2.length){
+        //     console.log(arr2.pop());
+        // }
+        console.log('-----------------------');
+        for(var i in arr2){
+            console.log(i,arr2[i]);
+        }
+        console.log('-----------------------');
+        for(var i of arr2){
+            console.log(i);
+        }
+        console.log('-----------------------');
+        var obj1=new Object();
+        obj1['key1']='val1';
+        obj1['key2']='val2';
+        obj1['key3']='val3';
+        console.log(obj1);
+        console.log(obj1['key1']);
+        console.log(obj1['key2']);
+        console.log(obj1['key3']);
+        var obj2={1:'val0','key1':'val1','key2':'val2'};
+        console.log(obj2);
+        console.log(obj2.key1);
+        console.log(obj2.key2);
+        console.log(obj2[1]);
+
+    </script>
+</head>
+<body>
+    <h1>number type</h1>
+</body>
+</html>

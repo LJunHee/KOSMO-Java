@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- applicationContext.xml -->
+<!-- 	<bean id = "module" class = "com.gimhae.module.Module02">
+		<property name="su1" value = "1234"></property>
+		<property name="su2" value = "3.14"></property>
+		<property name="su3" value = "@"></property>
+		<property name="su4" value = "true"></property>
+		<property name="msg" value = "abcd"></property>
+	</bean> -->
+<!-- 	<bean id = "date" class= "java.util.Date"
+	<bean id = "module" class = "com.gimhae.module.Module03">
+		<property name="date" ref="date"/>
+	</bean> -->
+<!-- 	<bean id = "module" class="com.gimhae.module.Module04">
+		<property name="arr1">
+			<array>
+				<value>item1</value>
+				<value>item2</value>
+				<value>item3</value>
+				<value>item4</value>
+			</array>
+		</property>
+	</bean> -->
+<!-- 	<bean id = "module" class = "com.gimhae.module.Module06">
+		<property name="set">
+			<list>
+				<value>item1</value>
+				<value>item2</value>
+				<value>item3</value>
+				<value>item4</value>
+				<value>item5</value>
+			</list>
+		</property>
+	</bean> -->
+<!-- 	<bean id = "module" class = "com.gimhae.module.Module07">
+		<property name="map">
+			<map>
+				<entry key = "key1">
+					<value>val1</value>
+				</entry>
+				<entry key = "key2">
+					<value>val2</value>
+				</entry>
+				<entry key = "key3">
+					<value>val3</value>
+				</entry>
+				<entry key = "key4">
+					<value>val4</value>
+				</entry>
+			</map>
+		</property>
+	</bean> -->
+	<bean id = "module" class = "com.gimhae.module.Module08">
+		<property name="props">
+			<props>
+				<prop key="k1">v1</prop>
+				<prop key="k2">v2</prop>
+				<prop key="k3">v3</prop>
+				<prop key="k4">v4</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id = "svc01" class = "com.gimhae.service.Service01">
+		<property name="module" ref = "module"/>
+	</bean>
+	
+
+</beans>

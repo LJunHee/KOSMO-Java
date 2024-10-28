@@ -1,0 +1,24 @@
+.container{
+    width: 1200px;
+    margin: 0px auto;
+}
+.grid1,.grid2,.grid3,.grid4,.grid5,.grid6,
+.grid7,.grid8,.grid9,.grid10,.grid11,.grid12
+{
+    float: left;
+}
+.grid1{width: 100px;}
+.grid2{width: 200px;}
+.grid3{width: 300px;}
+.grid4{width: 400px;}
+.grid5{width: 500px;}
+.grid6{width: 600px;}
+.grid7{width: 700px;}
+.grid8{width: 800px;}
+.grid9{width: 900px;}
+.grid10{width: 1000px;}
+.grid11{width: 1100px;}
+.grid12{width: 1200px;}
+.row,.clear{
+    clear: both;
+}

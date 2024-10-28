@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style rel = "stylesheet" type="text/css">
+        /*
+        + 다음 형제 요소
+        > 자식들
+        space 자식을 포함 자손들..
+        :first-child 첫번째 자식
+        :last-child 마지막 자식
+        :nth-child(idx) idx는 1부터
+        :nth-child(2n-1) 홀수
+        :nth-child(2n) 짝수
+
+        */
+        /*h1{color: aqua;}
+        h1+h2+p+h2+p+ul>li:last-child{color: blue;} */
+        ul>li>a{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>선택자</h1>
+    <h2>h2</h2>
+    <p>내용<a href="#">link</a></p>
+    <h2>h2</h2>
+    <p>내용</p>
+    <ul>
+        <li>item1<a href="#">link</a></li>
+        <li>item2<a href="#">link</a></li>
+        <li>item3<a href="#">link</a></li>
+        <li>item4<a href="#">link</a></li>
+        <li>item5<a href="#">link</a></li>
+    </ul>
+    <h2>h2</h2>
+    <ul>
+        <li>item1<a href="#">link</a></li>
+        <li>item2<a href="#">link</a></li>
+        <li>item3<a href="#">link</a></li>
+        <li>item4<a href="#">link</a></li>
+    </ul>
+    <h2>h2</h2>
+    <p>내용</p>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body>*{
+            width: 800px;
+        }
+        .header{
+            padding: 30px;
+        }
+        .header>h1{
+            background-image: url(imgs/logo.png);
+            background-repeat: no-repeat;
+            height: 41px;
+            text-indent: -999px;
+        }
+        #menu{
+            clear: both;
+            background-color: gray;
+            height: 50px;
+        }
+        #menu>ul{
+            list-style: none;
+            width: 400px;
+            margin: 0px auto;
+        }
+        #menu>ul>li{
+            float: left;
+            width: 100px;
+        }
+        #menu>ul>li>a{
+            display: block;
+            height: 50px;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+        }
+        #menu>ul>li>ul{
+            list-style: none;
+            position: absolute;
+        }
+        #menu>ul>li>ul>li{
+            background-color: gray;
+            width: 100px;
+            border-top: 2px solid white;
+        }
+        #menu>ul>li>ul>li>a{
+            display: block;
+            height: 50px;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+        }
+        #content{clear: both;}
+        #footer{
+            margin: 50px auto;
+        }
+        #footer>p{
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#menu>ul ul').hide();
+            $('#menu>ul>li:eq(1),#menu>ul>li:eq(2)')
+                        .mouseenter(function(e){
+                            console.log(e.target);
+                            $(e.target).parent().find('ul').slideDown(500);
+                        })
+                        .mouseleave(function(e){
+                            console.log($(e.target).parent().parent());
+                            $(e.target).parent().parent().slideUp(500);
+                        });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <h1>인제대학교</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">home</a></li>
+                <li><a href="#">intro</a>
+                    <ul>
+                        <li><a href="#">add</a></li>
+                        <li><a href="#">detail</a></li>
+                        <li><a href="#">edit</a></li>
+                        <li><a href="#">delete</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">bbs</a>
+                    <ul>
+                        <li><a href="#">add</a></li>
+                        <li><a href="#">detail</a></li>
+                        <li><a href="#">edit</a></li>
+                        <li><a href="#">delete</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">login</a></li>
+            </ul>
+
+        </div>
+        <div id="content">
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Himenaeos finibus felis sit vulputate luctus venenatis torquent. Imperdiet fermentum dictum tortor ridiculus sit et tincidunt. Eleifend natoque tempor habitasse fermentum maximus platea natoque enim. Amet amet class mauris dignissim ullamcorper nec natoque. Aptent iaculis nostra sit penatibus, ad libero morbi molestie. Hendrerit eu conubia hac ultrices mauris facilisis curae. Senectus ornare nulla proin integer lacus. Risus velit posuere diam eleifend habitasse ad eros ac. Ridiculus faucibus volutpat interdum a; est mattis lorem. Dis laoreet penatibus maximus convallis nibh himenaeos tincidunt aliquam. Per ut scelerisque platea, iaculis lectus orci odio per maecenas. Interdum sem eget luctus dolor mattis volutpat parturient eu eget. Dolor ultrices vestibulum donec arcu class sit. Turpis odio ultrices leo massa suspendisse dis. Sapien viverra neque magnis commodo at. Laoreet potenti laoreet vivamus ultrices aliquet blandit dapibus turpis? Et hendrerit finibus euismod sollicitudin, vestibulum turpis. Dictumst duis primis vivamus, consectetur molestie aptent. Augue eros himenaeos placerat eleifend dapibus vestibulum phasellus. Tristique accumsan tincidunt massa tristique; donec condimentum nec id. Dolor netus ac; euismod nam sem posuere duis nascetur est. Proin egestas senectus vehicula justo at adipiscing per metus. Senectus mi metus rhoncus; sem sapien cursus mus. Amet libero elit mattis lacinia nisl phasellus primis. Phasellus nullam placerat urna habitasse adipiscing nullam ultricies finibus.
+        </div>
+        <div id="footer">
+            <p>김해캠퍼스 (50834) 경남 김해시 인제로 197</p>
+            <p>Copyright &copy; 2024 INJE University. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

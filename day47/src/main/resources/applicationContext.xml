@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ctxt="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="location" value="classpath:/dbInfo.properties"/>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="${mysql.url}"/>
+		<property name="username" value="${mysql.user}"/>
+		<property name="password" value="${mysql.password}"/>
+		<property name="minIdle" value="3"/>
+		<property name="maxIdle" value="10"/>
+		<property name="maxActive" value="5"/>
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<ctxt:annotation-config/>
+	<ctxt:component-scan base-package="com.gimhae.emp"/>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        @keyframes ani1{
+            from{
+                top:-16px;
+            }
+            to{
+                top:-616px;
+            }
+        }
+        div{
+            width: 400px;
+            height: 120px;
+            overflow: hidden;
+            background-color: aqua;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+            padding: 0px;
+            position: absolute;
+            left:0px;
+            top:-16px;
+            animation-name: ani1;
+            animation-duration: 6s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+        }
+        ul>li{
+            height: 120px;
+        }
+        ul>li>img{
+            width: 400px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul style="animation-play-state: paused;">
+            <li><img src="imgs/main1.jpg" alt=""></li>
+            <li><img src="imgs/main2.jpg" alt=""></li>
+            <li><img src="imgs/main3.jpg" alt=""></li>
+            <li><img src="imgs/main4.jpg" alt=""></li>
+            <li><img src="imgs/main5.jpg" alt=""></li>
+            <li><img src="imgs/main6.jpg" alt=""></li>
+        </ul>
+    </div>
+    <button onclick="play();">▶</button>
+    <button onclick="stop();">■</button>
+    <script type="text/javascript">
+        var ul=document.getElementsByTagName('ul')[0];
+        function play(){
+            ul.style.animationPlayState='running';
+        }
+        function stop(){
+            ul.style.animationPlayState='paused';
+        }
+    </script>
+</body>
+</html>

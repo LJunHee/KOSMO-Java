@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-md-12">
+				<h1>인제대학교</h1>
+			</div>
+		</div>
+		<div class = "row" id = "menu">
+			<div class = "col-md-12 bg-primary text-center">
+				<ul class = "list-inline">
+					<li><a class="bg-primary center-block" href = "<%=path %>/">home</a></li>
+					<li><a class="bg-primary center-block" href = "<%=path %>/intro.jsp">intro</a></li>
+					<li><a class="bg-primary center-block" href = "<%=path %>/bbs/">bbs</a></li>
+					<li><a class="bg-primary center-block" href = "<%=path %>/login/">login</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class = "row" id = "content">
+			<div class = "col-md-12">
+				<!-- content begin-->

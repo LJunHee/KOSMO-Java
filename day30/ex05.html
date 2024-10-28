@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel = "stylesheet" type = "text/css">
+        img{
+            height: 200px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+
+        var option = {
+            mode : "horizontal",
+            minSlides : 1,
+            maxSlides : 2,
+            moveSlides : 0,
+            slideWidth : 200,
+            //pager : true, pagerType : 'short', pagerShortSeparator:':',
+            //nextText : '다음', prevText : '이전', nextSelector : $('button').eq(1),
+            //speed : 3000,
+            //startSlide : 1,
+            //infiniteLoop : false,
+            //hideControlOnEnd : true
+            onSliderLoad : function(idx){console.log('loading',idx);},
+            onSliderResize : function(idx){console.log('resize',idx);},
+            onSlideBefore : function(a,b,c){console.log('before',a,b,c);},
+            onSlideAfter : function(a,b,c){console.log('after',a,b,c);},
+            onSlideNext : function(a,b,c){console.log('next',a,b,c);},
+            onSlidePrev : function(a,b,c){console.log('prev',a,b,c);},
+
+        };
+
+        $(function(){
+            $('.slider').bxSlider(option);
+        });
+    </script>
+
+</head>
+<body>
+    <div class="slider">
+        <div><img src="imgs/img01.jpg"></div>
+        <div><img src="imgs/img02.jpg"></div>
+        <div><img src="imgs/img03.jpg"></div>
+        <div><img src="imgs/img04.jpg"></div>
+        <div><img src="imgs/img05.jpg"></div>
+        <div><img src="imgs/img06.jpg"></div>
+    </div>
+    <p>
+        <button>←</button>
+        <button>→</button>
+    </p>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" src="/day36_1/imgs/logo.png">
+				</a>
+			</div>
+			<ul class = "nav navbar-nav">
+				<li class = "active"><a href="/day36_1/">home</a></li>
+				<li><a href="/day36_1/dept/">dept</a></li>
+				<li><a href="/day36_1/emp/">emp</a></li>
+				<li><a href="/day36_1/login/">login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class = "container">
+		<div id = "content" class = "row">
+			<div class = "col-md-12">
+			<!-- content begin -->
